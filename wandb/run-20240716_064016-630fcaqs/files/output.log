@@ -1,0 +1,437 @@
+WARNING:py.warnings:/home/opc/miniconda3/envs/minigpt4qwen/lib/python3.8/site-packages/torch/utils/checkpoint.py:31: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn("None of the inputs have requires_grad=True. Gradients will be None")
+WARNING:py.warnings:/home/opc/miniconda3/envs/minigpt4qwen/lib/python3.8/site-packages/torch/utils/checkpoint.py:31: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn("None of the inputs have requires_grad=True. Gradients will be None")
+step = 0, loss = 2.304839849472046, lr=0.0
+step = 1, loss = 2.064002752304077, lr=0.000125
+step = 2, loss = 2.1475813388824463, lr=0.00025
+step = 3, loss = 2.0136218070983887, lr=0.000375
+step = 4, loss = 1.9815300703048706, lr=0.0005
+step = 5, loss = 2.0260543823242188, lr=0.000625
+step = 6, loss = 1.8477237224578857, lr=0.00075
+step = 7, loss = 1.8819760084152222, lr=0.000875
+step = 8, loss = 2.0756335258483887, lr=0.001
+[2024-07-16 06:41:30,299] [INFO] [logging.py:96:log_dist] [Rank 0] step=10, skipped=0, lr=[0.001], mom=[[0.9, 0.99]]
+steps: 10 loss: 1.8559 iter time (s): 6.746 samples/sec: 9.487
+step = 9, loss = 1.8559194803237915, lr=0.0009999700448413483
+Step=     9, lr=0.0009999700448413483, loss=2.0199, 7.46 it/s
+step = 10, loss = 1.7435476779937744, lr=0.0009998801829546387
+step = 11, loss = 1.827707052230835, lr=0.00099973042510718
+step = 12, loss = 1.786317229270935, lr=0.0009995207892430523
+step = 13, loss = 1.8518860340118408, lr=0.000999251300480958
+step = 14, loss = 1.733518362045288, lr=0.0009989219911112114
+step = 15, loss = 1.7636115550994873, lr=0.0009985329005918703
+step = 16, loss = 1.7440769672393799, lr=0.0009980840755440075
+step = 17, loss = 1.7511214017868042, lr=0.0009975755697461254
+step = 18, loss = 1.8095206022262573, lr=0.000997007444127711
+[2024-07-16 06:42:36,392] [INFO] [logging.py:96:log_dist] [Rank 0] step=20, skipped=0, lr=[0.000997007444127711], mom=[[0.9, 0.99]]
+steps: 20 loss: 1.6886 iter time (s): 6.608 samples/sec: 9.686
+step = 19, loss = 1.688559651374817, lr=0.0009963797667619366
+Step=    19, lr=0.0009963797667619366, loss=1.7700, 6.61 it/s
+step = 20, loss = 1.7724552154541016, lr=0.0009956926128575027
+step = 21, loss = 1.7952299118041992, lr=0.0009949460647496258
+step = 22, loss = 1.6949567794799805, lr=0.0009941402118901744
+step = 23, loss = 1.8050564527511597, lr=0.0009932751508369491
+step = 24, loss = 1.7096521854400635, lr=0.0009923509852421144
+step = 25, loss = 1.824307918548584, lr=0.0009913678258397784
+step = 26, loss = 1.8205358982086182, lr=0.000990325790432725
+step = 27, loss = 1.8214420080184937, lr=0.0009892250038782972
+step = 28, loss = 1.755542278289795, lr=0.000988065598073439
+[2024-07-16 06:43:42,505] [INFO] [logging.py:96:log_dist] [Rank 0] step=30, skipped=0, lr=[0.000988065598073439], mom=[[0.9, 0.99]]
+steps: 30 loss: 1.5559 iter time (s): 6.609 samples/sec: 9.683
+step = 29, loss = 1.5558584928512573, lr=0.0009868477119388895
+Step=    29, lr=0.0009868477119388895, loss=1.7555, 6.61 it/s
+step = 30, loss = 1.7466046810150146, lr=0.0009855714914025384
+step = 31, loss = 1.7430649995803833, lr=0.0009842370893819404
+step = 32, loss = 1.755595326423645, lr=0.000982844665765992
+step = 33, loss = 1.8334317207336426, lr=0.0009813943873957748
+step = 34, loss = 1.6338649988174438, lr=0.0009798864280445632
+step = 35, loss = 1.7091268301010132, lr=0.0009783209683970038
+step = 36, loss = 1.6293309926986694, lr=0.0009766981960274653
+step = 37, loss = 1.6460477113723755, lr=0.0009750183053775626
+step = 38, loss = 1.7295271158218384, lr=0.0009732814977328593
+[2024-07-16 06:44:48,587] [INFO] [logging.py:96:log_dist] [Rank 0] step=40, skipped=0, lr=[0.0009732814977328593], mom=[[0.9, 0.99]]
+steps: 40 loss: 1.8020 iter time (s): 6.606 samples/sec: 9.688
+step = 39, loss = 1.8019604682922363, lr=0.0009714879811987496
+Step=    39, lr=0.0009714879811987496, loss=1.7229, 6.61 it/s
+step = 40, loss = 1.6894696950912476, lr=0.0009696379706755229
+step = 41, loss = 1.8114476203918457, lr=0.0009677316878326143
+step = 42, loss = 1.6340769529342651, lr=0.0009657693610820436
+step = 43, loss = 1.757258415222168, lr=0.0009637512255510475
+step = 44, loss = 1.5862489938735962, lr=0.0009616775230539056
+step = 45, loss = 1.6835546493530273, lr=0.0009595485020629675
+step = 46, loss = 1.6585420370101929, lr=0.0009573644176788794
+step = 47, loss = 1.62665855884552, lr=0.0009551255316000182
+step = 48, loss = 1.7087962627410889, lr=0.0009528321120911345
+[2024-07-16 06:45:54,632] [INFO] [logging.py:96:log_dist] [Rank 0] step=50, skipped=0, lr=[0.0009528321120911345], mom=[[0.9, 0.99]]
+steps: 50 loss: 1.6919 iter time (s): 6.603 samples/sec: 9.693
+step = 49, loss = 1.6918838024139404, lr=0.0009504844339512095
+Step=    49, lr=0.0009504844339512095, loss=1.6848, 6.60 it/s
+step = 50, loss = 1.6912404298782349, lr=0.0009480827784805278
+step = 51, loss = 1.6587070226669312, lr=0.0009456274334469719
+step = 52, loss = 1.7296421527862549, lr=0.0009431186930515419
+step = 53, loss = 1.6254538297653198, lr=0.000940556857893104
+step = 54, loss = 1.7428561449050903, lr=0.0009379422349323727
+step = 55, loss = 1.695971965789795, lr=0.0009352751374551305
+step = 56, loss = 1.6529985666275024, lr=0.0009325558850346896
+step = 57, loss = 1.6702375411987305, lr=0.0009297848034936007
+step = 58, loss = 1.7783912420272827, lr=0.0009269622248646123
+[2024-07-16 06:47:00,716] [INFO] [logging.py:96:log_dist] [Rank 0] step=60, skipped=0, lr=[0.0009269622248646123], mom=[[0.9, 0.99]]
+steps: 60 loss: 1.6976 iter time (s): 6.607 samples/sec: 9.687
+step = 59, loss = 1.6976264715194702, lr=0.0009240884873508876
+Step=    59, lr=0.0009240884873508876, loss=1.6943, 6.61 it/s
+step = 60, loss = 1.748788595199585, lr=0.0009211639352854786
+step = 61, loss = 1.7315266132354736, lr=0.0009181889190900701
+step = 62, loss = 1.7441328763961792, lr=0.0009151637952329903
+step = 63, loss = 1.594093680381775, lr=0.0009120889261864997
+step = 64, loss = 1.6104295253753662, lr=0.0009089646803833589
+step = 65, loss = 1.6013751029968262, lr=0.0009057914321726824
+step = 66, loss = 1.625361442565918, lr=0.0009025695617750848
+step = 67, loss = 1.6666568517684937, lr=0.0008992994552371217
+step = 68, loss = 1.6320034265518188, lr=0.0008959815043850335
+[2024-07-16 06:48:06,786] [INFO] [logging.py:96:log_dist] [Rank 0] step=70, skipped=0, lr=[0.0008959815043850335], mom=[[0.9, 0.99]]
+steps: 70 loss: 1.6330 iter time (s): 6.605 samples/sec: 9.689
+step = 69, loss = 1.6329765319824219, lr=0.0008926161067777973
+Step=    69, lr=0.0008926161067777973, loss=1.6587, 6.61 it/s
+step = 70, loss = 1.7141414880752563, lr=0.0008892036656594897
+step = 71, loss = 1.6416501998901367, lr=0.0008857445899109715
+step = 72, loss = 1.6299489736557007, lr=0.0008822392940008937
+step = 73, loss = 1.8122683763504028, lr=0.0008786881979360368
+step = 74, loss = 1.6290881633758545, lr=0.0008750917272109848
+step = 75, loss = 1.6722276210784912, lr=0.0008714503127571425
+step = 76, loss = 1.7143590450286865, lr=0.0008677643908911004
+step = 77, loss = 1.5591002702713013, lr=0.000864034403262356
+step = 78, loss = 1.7670265436172485, lr=0.0008602607968003935
+[2024-07-16 06:49:12,864] [INFO] [logging.py:96:log_dist] [Rank 0] step=80, skipped=0, lr=[0.0008602607968003935], mom=[[0.9, 0.99]]
+steps: 80 loss: 1.5938 iter time (s): 6.606 samples/sec: 9.688
+step = 79, loss = 1.5938246250152588, lr=0.0008564440236611344
+Step=    79, lr=0.0008564440236611344, loss=1.6734, 6.61 it/s
+step = 80, loss = 1.6370995044708252, lr=0.000852584541172758
+step = 81, loss = 1.6391973495483398, lr=0.0008486828117809056
+step = 82, loss = 1.623693585395813, lr=0.0008447393029932691
+step = 83, loss = 1.6721091270446777, lr=0.0008407544873235736
+step = 84, loss = 1.6626642942428589, lr=0.0008367288422349617
+step = 85, loss = 1.6431419849395752, lr=0.0008326628500827827
+step = 86, loss = 1.6349114179611206, lr=0.0008285569980567964
+step = 87, loss = 1.5722588300704956, lr=0.0008244117781227982
+step = 88, loss = 1.6355323791503906, lr=0.0008202276869636714
+[2024-07-16 06:50:18,934] [INFO] [logging.py:96:log_dist] [Rank 0] step=90, skipped=0, lr=[0.0008202276869636714], mom=[[0.9, 0.99]]
+steps: 90 loss: 1.5575 iter time (s): 6.605 samples/sec: 9.689
+step = 89, loss = 1.5575040578842163, lr=0.0008160052259198736
+Step=    89, lr=0.0008160052259198736, loss=1.6278, 6.61 it/s
+step = 90, loss = 1.645882487297058, lr=0.0008117449009293668
+step = 91, loss = 1.5946824550628662, lr=0.0008074472224669951
+step = 92, loss = 1.6175827980041504, lr=0.0008031127054833189
+step = 93, loss = 1.6190569400787354, lr=0.0007987418693429144
+step = 94, loss = 1.6889820098876953, lr=0.0007943352377621413
+step = 95, loss = 1.6124309301376343, lr=0.0007898933387463923
+step = 96, loss = 1.5922296047210693, lr=0.0007854167045268264
+step = 97, loss = 1.7187632322311401, lr=0.0007809058714965962
+step = 98, loss = 1.589409351348877, lr=0.0007763613801465785
+[2024-07-16 06:51:25,026] [INFO] [logging.py:96:log_dist] [Rank 0] step=100, skipped=0, lr=[0.0007763613801465785], mom=[[0.9, 0.99]]
+steps: 100 loss: 1.6610 iter time (s): 6.607 samples/sec: 9.686
+step = 99, loss = 1.6610127687454224, lr=0.0007717837750006106
+Step=    99, lr=0.0007717837750006106, loss=1.6340, 6.61 it/s
+step = 100, loss = 1.6314054727554321, lr=0.0007671736045502462
+step = 101, loss = 1.747209906578064, lr=0.0007625314211890342
+step = 102, loss = 1.5560967922210693, lr=0.000757857781146331
+step = 103, loss = 1.5396836996078491, lr=0.0007531532444206523
+step = 104, loss = 1.6027997732162476, lr=0.0007484183747125744
+step = 105, loss = 1.6061735153198242, lr=0.00074365373935719
+step = 106, loss = 1.6639362573623657, lr=0.0007388599092561315
+step = 107, loss = 1.6258670091629028, lr=0.0007340374588091636
+step = 108, loss = 1.6558235883712769, lr=0.0007291869658453594
+[2024-07-16 06:52:31,212] [INFO] [logging.py:96:log_dist] [Rank 0] step=110, skipped=0, lr=[0.0007291869658453594], mom=[[0.9, 0.99]]
+steps: 110 loss: 1.5739 iter time (s): 6.616 samples/sec: 9.673
+step = 109, loss = 1.5739482641220093, lr=0.0007243090115538639
+Step=   109, lr=0.0007243090115538639, loss=1.6203, 6.62 it/s
+step = 110, loss = 1.6225204467773438, lr=0.0007194041804142557
+step = 111, loss = 1.5835990905761719, lr=0.0007144730601265149
+step = 112, loss = 1.5921218395233154, lr=0.0007095162415406034
+step = 113, loss = 1.6361360549926758, lr=0.0007045343185856698
+step = 114, loss = 1.6033483743667603, lr=0.0006995278881988847
+step = 115, loss = 1.6071451902389526, lr=0.0006944975502539135
+step = 116, loss = 1.5030425786972046, lr=0.0006894439074890412
+step = 117, loss = 1.5170260667800903, lr=0.0006843675654349513
+step = 118, loss = 1.667506217956543, lr=0.0006792691323421698
+[2024-07-16 06:53:37,424] [INFO] [logging.py:96:log_dist] [Rank 0] step=120, skipped=0, lr=[0.0006792691323421698], mom=[[0.9, 0.99]]
+steps: 120 loss: 1.7038 iter time (s): 6.618 samples/sec: 9.670
+step = 119, loss = 1.7038280963897705, lr=0.0006741492191081856
+Step=   119, lr=0.0006741492191081856, loss=1.6036, 6.62 it/s
+step = 120, loss = 1.7452497482299805, lr=0.0006690084392042513
+step = 121, loss = 1.4769474267959595, lr=0.0006638474086018778
+step = 122, loss = 1.620694637298584, lr=0.0006586667456990268
+step = 123, loss = 1.5700764656066895, lr=0.0006534670712460149
+step = 124, loss = 1.5548571348190308, lr=0.000648249008271135
+step = 125, loss = 1.5765726566314697, lr=0.0006430131820060042
+step = 126, loss = 1.7282382249832153, lr=0.0006377602198106482
+step = 127, loss = 1.5133146047592163, lr=0.000632490751098331
+step = 128, loss = 1.629894495010376, lr=0.0006272054072601373
+[2024-07-16 06:54:43,538] [INFO] [logging.py:96:log_dist] [Rank 0] step=130, skipped=0, lr=[0.0006272054072601373], mom=[[0.9, 0.99]]
+steps: 130 loss: 1.5293 iter time (s): 6.609 samples/sec: 9.683
+step = 129, loss = 1.5293469429016113, lr=0.0006219048215893203
+Step=   129, lr=0.0006219048215893203, loss=1.5945, 6.61 it/s
+step = 130, loss = 1.6475013494491577, lr=0.0006165896292054187
+step = 131, loss = 1.5170964002609253, lr=0.0006112604669781572
+step = 132, loss = 1.566731572151184, lr=0.0006059179734511357
+step = 133, loss = 1.5456162691116333, lr=0.0006005627887653189
+step = 134, loss = 1.6755317449569702, lr=0.0005951955545823342
+step = 135, loss = 1.6659252643585205, lr=0.0005898169140075878
+step = 136, loss = 1.6657989025115967, lr=0.0005844275115132064
+step = 137, loss = 1.652696967124939, lr=0.0005790279928608173
+step = 138, loss = 1.543434500694275, lr=0.0005736190050241719
+[2024-07-16 06:55:49,756] [INFO] [logging.py:96:log_dist] [Rank 0] step=140, skipped=0, lr=[0.0005736190050241719], mom=[[0.9, 0.99]]
+steps: 140 loss: 1.6746 iter time (s): 6.619 samples/sec: 9.669
+step = 139, loss = 1.6745975017547607, lr=0.0005682011961116252
+Step=   139, lr=0.0005682011961116252, loss=1.6155, 6.62 it/s
+step = 140, loss = 1.625613808631897, lr=0.0005627752152884794
+step = 141, loss = 1.6492584943771362, lr=0.0005573417126992003
+step = 142, loss = 1.5538266897201538, lr=0.000551901339389516
+step = 143, loss = 1.6014578342437744, lr=0.0005464547472284091
+step = 144, loss = 1.5507729053497314, lr=0.0005410025888300086
+step = 145, loss = 1.5858161449432373, lr=0.000535545517475394
+step = 146, loss = 1.556259036064148, lr=0.0005300841870343183
+step = 147, loss = 1.5510931015014648, lr=0.0005246192518868604
+step = 148, loss = 1.6040496826171875, lr=0.0005191513668450177
+[2024-07-16 06:56:55,925] [INFO] [logging.py:96:log_dist] [Rank 0] step=150, skipped=0, lr=[0.0005191513668450177], mom=[[0.9, 0.99]]
+steps: 150 loss: 1.5201 iter time (s): 6.615 samples/sec: 9.675
+step = 149, loss = 1.520051121711731, lr=0.0005136811870742462
+Step=   149, lr=0.0005136811870742462, loss=1.5798, 6.62 it/s
+step = 150, loss = 1.686185598373413, lr=0.0005082093680149571
+step = 151, loss = 1.6618376970291138, lr=0.0005027365653039828
+step = 152, loss = 1.6471800804138184, lr=0.0004972634346960172
+step = 153, loss = 1.5962625741958618, lr=0.0004917906319850429
+step = 154, loss = 1.5703972578048706, lr=0.00048631881292575396
+step = 155, loss = 1.6307570934295654, lr=0.00048084863315498236
+step = 156, loss = 1.5890511274337769, lr=0.00047538074811313976
+step = 157, loss = 1.5446300506591797, lr=0.0004699158129656818
+step = 158, loss = 1.598281979560852, lr=0.000464454482524606
+[2024-07-16 06:58:02,044] [INFO] [logging.py:96:log_dist] [Rank 0] step=160, skipped=0, lr=[0.000464454482524606], mom=[[0.9, 0.99]]
+steps: 160 loss: 1.5510 iter time (s): 6.610 samples/sec: 9.682
+step = 159, loss = 1.5509896278381348, lr=0.0004589974111699914
+Step=   159, lr=0.0004589974111699914, loss=1.6076, 6.61 it/s
+step = 160, loss = 1.6830474138259888, lr=0.00045354525277159106
+step = 161, loss = 1.5481406450271606, lr=0.0004480986606104841
+step = 162, loss = 1.7327250242233276, lr=0.0004426582873007998
+step = 163, loss = 1.579583764076233, lr=0.0004372247847115206
+step = 164, loss = 1.5416303873062134, lr=0.0004317988038883749
+step = 165, loss = 1.4539756774902344, lr=0.0004263809949758283
+step = 166, loss = 1.5269691944122314, lr=0.0004209720071391828
+step = 167, loss = 1.4843389987945557, lr=0.0004155724884867935
+step = 168, loss = 1.6066819429397583, lr=0.0004101830859924123
+[2024-07-16 06:59:08,138] [INFO] [logging.py:96:log_dist] [Rank 0] step=170, skipped=0, lr=[0.0004101830859924123], mom=[[0.9, 0.99]]
+steps: 170 loss: 1.5270 iter time (s): 6.607 samples/sec: 9.686
+step = 169, loss = 1.5269790887832642, lr=0.00040480444541766584
+Step=   169, lr=0.00040480444541766584, loss=1.5684, 6.61 it/s
+step = 170, loss = 1.5859942436218262, lr=0.0003994372112346813
+step = 171, loss = 1.4896336793899536, lr=0.0003940820265488645
+step = 172, loss = 1.5517703294754028, lr=0.00038873953302184295
+step = 173, loss = 1.5318775177001953, lr=0.0003834103707945814
+step = 174, loss = 1.5119669437408447, lr=0.00037809517841067973
+step = 175, loss = 1.484911322593689, lr=0.00037279459273986264
+step = 176, loss = 1.5393731594085693, lr=0.00036750924890166915
+step = 177, loss = 1.5902607440948486, lr=0.00036223978018935175
+step = 178, loss = 1.5366575717926025, lr=0.0003569868179939958
+[2024-07-16 07:00:14,256] [INFO] [logging.py:96:log_dist] [Rank 0] step=180, skipped=0, lr=[0.0003569868179939958], mom=[[0.9, 0.99]]
+steps: 180 loss: 1.4876 iter time (s): 6.610 samples/sec: 9.683
+step = 179, loss = 1.48759126663208, lr=0.00035175099172886506
+Step=   179, lr=0.00035175099172886506, loss=1.5310, 6.61 it/s
+step = 180, loss = 1.6323258876800537, lr=0.0003465329287539852
+step = 181, loss = 1.5743900537490845, lr=0.0003413332543009734
+step = 182, loss = 1.5839765071868896, lr=0.00033615259139812225
+step = 183, loss = 1.5514349937438965, lr=0.0003309915607957487
+step = 184, loss = 1.585479497909546, lr=0.00032585078089181457
+step = 185, loss = 1.604589819908142, lr=0.0003207308676578302
+step = 186, loss = 1.4885104894638062, lr=0.00031563243456504876
+step = 187, loss = 1.6527698040008545, lr=0.0003105560925109587
+step = 188, loss = 1.5451421737670898, lr=0.0003055024497460866
+[2024-07-16 07:01:20,337] [INFO] [logging.py:96:log_dist] [Rank 0] step=190, skipped=0, lr=[0.0003055024497460866], mom=[[0.9, 0.99]]
+steps: 190 loss: 1.5538 iter time (s): 6.606 samples/sec: 9.688
+step = 189, loss = 1.5537573099136353, lr=0.00030047211180111544
+Step=   189, lr=0.00030047211180111544, loss=1.5772, 6.61 it/s
+step = 190, loss = 1.6064332723617554, lr=0.00029546568141433004
+step = 191, loss = 1.4123282432556152, lr=0.00029048375845939676
+step = 192, loss = 1.6689025163650513, lr=0.00028552693987348533
+step = 193, loss = 1.5805290937423706, lr=0.0002805958195857443
+step = 194, loss = 1.5177674293518066, lr=0.0002756909884461364
+step = 195, loss = 1.6171159744262695, lr=0.00027081303415464055
+step = 196, loss = 1.4959064722061157, lr=0.0002659625411908364
+step = 197, loss = 1.5848640203475952, lr=0.00026114009074386846
+step = 198, loss = 1.5501066446304321, lr=0.0002563462606428101
+[2024-07-16 07:02:26,398] [INFO] [logging.py:96:log_dist] [Rank 0] step=200, skipped=0, lr=[0.0002563462606428101], mom=[[0.9, 0.99]]
+steps: 200 loss: 1.5773 iter time (s): 6.604 samples/sec: 9.691
+step = 199, loss = 1.5772522687911987, lr=0.0002515816252874258
+Step=   199, lr=0.0002515816252874258, loss=1.5611, 6.61 it/s
+step = 200, loss = 1.5146214962005615, lr=0.0002468467555793479
+step = 201, loss = 1.6204615831375122, lr=0.00024214221885366917
+step = 202, loss = 1.5584795475006104, lr=0.00023746857881096583
+step = 203, loss = 1.5367149114608765, lr=0.000232826395449754
+step = 204, loss = 1.53403639793396, lr=0.00022821622499938948
+step = 205, loss = 1.6075594425201416, lr=0.00022363861985342175
+step = 206, loss = 1.5247255563735962, lr=0.00021909412850340377
+step = 207, loss = 1.601053237915039, lr=0.00021458329547317386
+step = 208, loss = 1.475257158279419, lr=0.00021010666125360767
+[2024-07-16 07:03:32,471] [INFO] [logging.py:96:log_dist] [Rank 0] step=210, skipped=0, lr=[0.00021010666125360767], mom=[[0.9, 0.99]]
+steps: 210 loss: 1.5879 iter time (s): 6.606 samples/sec: 9.689
+step = 209, loss = 1.5879132747650146, lr=0.00020566476223785857
+Step=   209, lr=0.00020566476223785857, loss=1.5561, 6.61 it/s
+step = 210, loss = 1.53192138671875, lr=0.00020125813065708566
+step = 211, loss = 1.50309157371521, lr=0.00019688729451668098
+step = 212, loss = 1.588809609413147, lr=0.0001925527775330051
+step = 213, loss = 1.4919366836547852, lr=0.00018825509907063325
+step = 214, loss = 1.4450727701187134, lr=0.0001839947740801266
+step = 215, loss = 1.5720632076263428, lr=0.0001797723130363288
+step = 216, loss = 1.69449782371521, lr=0.0001755882218772018
+step = 217, loss = 1.5830851793289185, lr=0.00017144300194320356
+step = 218, loss = 1.5377070903778076, lr=0.00016733714991721722
+[2024-07-16 07:04:38,542] [INFO] [logging.py:96:log_dist] [Rank 0] step=220, skipped=0, lr=[0.00016733714991721722], mom=[[0.9, 0.99]]
+steps: 220 loss: 1.7730 iter time (s): 6.605 samples/sec: 9.689
+step = 219, loss = 1.7730417251586914, lr=0.00016327115776503833
+Step=   219, lr=0.00016327115776503833, loss=1.5721, 6.61 it/s
+step = 220, loss = 1.5147722959518433, lr=0.0001592455126764264
+step = 221, loss = 1.6243609189987183, lr=0.00015526069700673106
+step = 222, loss = 1.5058698654174805, lr=0.00015131718821909435
+step = 223, loss = 1.5639500617980957, lr=0.00014741545882724212
+step = 224, loss = 1.5928939580917358, lr=0.00014355597633886576
+step = 225, loss = 1.6173806190490723, lr=0.00013973920319960653
+step = 226, loss = 1.7384190559387207, lr=0.0001359655967376442
+step = 227, loss = 1.5053174495697021, lr=0.00013223560910889944
+step = 228, loss = 1.5174587965011597, lr=0.00012854968724285753
+[2024-07-16 07:05:44,658] [INFO] [logging.py:96:log_dist] [Rank 0] step=230, skipped=0, lr=[0.00012854968724285753], mom=[[0.9, 0.99]]
+steps: 230 loss: 1.6881 iter time (s): 6.610 samples/sec: 9.683
+step = 229, loss = 1.6881362199783325, lr=0.0001249082727890151
+Step=   229, lr=0.0001249082727890151, loss=1.5869, 6.61 it/s
+step = 230, loss = 1.5607267618179321, lr=0.0001213118020639633
+step = 231, loss = 1.6081805229187012, lr=0.00011776070599910638
+step = 232, loss = 1.5364232063293457, lr=0.00011425541008902851
+step = 233, loss = 1.5506130456924438, lr=0.00011079633434051029
+step = 234, loss = 1.5357410907745361, lr=0.00010738389322220277
+step = 235, loss = 1.5006202459335327, lr=0.00010401849561496657
+step = 236, loss = 1.5335816144943237, lr=0.00010070054476287849
+step = 237, loss = 1.607356309890747, lr=9.743043822491543e-05
+step = 238, loss = 1.5700249671936035, lr=9.420856782731757e-05
+[2024-07-16 07:06:50,745] [INFO] [logging.py:96:log_dist] [Rank 0] step=240, skipped=0, lr=[9.420856782731757e-05], mom=[[0.9, 0.99]]
+steps: 240 loss: 1.5482 iter time (s): 6.607 samples/sec: 9.687
+step = 239, loss = 1.5481879711151123, lr=9.103531961664119e-05
+Step=   239, lr=9.103531961664119e-05, loss=1.5551, 6.61 it/s
+step = 240, loss = 1.5359998941421509, lr=8.791107381350028e-05
+step = 241, loss = 1.573369026184082, lr=8.483620476700965e-05
+step = 242, loss = 1.6130614280700684, lr=8.181108090993001e-05
+step = 243, loss = 1.489404559135437, lr=7.883606471452137e-05
+step = 244, loss = 1.570473074913025, lr=7.59115126491125e-05
+step = 245, loss = 1.6088613271713257, lr=7.303777513538762e-05
+step = 246, loss = 1.5926259756088257, lr=7.021519650639951e-05
+step = 247, loss = 1.5221047401428223, lr=6.744411496531056e-05
+step = 248, loss = 1.5460880994796753, lr=6.472486254486954e-05
+[2024-07-16 07:07:56,826] [INFO] [logging.py:96:log_dist] [Rank 0] step=250, skipped=0, lr=[6.472486254486954e-05], mom=[[0.9, 0.99]]
+steps: 250 loss: 1.6350 iter time (s): 6.606 samples/sec: 9.688
+step = 249, loss = 1.635004997253418, lr=6.205776506762728e-05
+Step=   249, lr=6.205776506762728e-05, loss=1.5687, 6.61 it/s
+step = 250, loss = 1.5248125791549683, lr=5.9443142106896e-05
+step = 251, loss = 1.596146821975708, lr=5.688130694845817e-05
+step = 252, loss = 1.47605562210083, lr=5.437256655302814e-05
+step = 253, loss = 1.5909991264343262, lr=5.191722151947226e-05
+step = 254, loss = 1.493451476097107, lr=4.9515566048790485e-05
+step = 255, loss = 1.5790815353393555, lr=4.716788790886545e-05
+step = 256, loss = 1.5874797105789185, lr=4.487446839998194e-05
+step = 257, loss = 1.6158349514007568, lr=4.263558232112064e-05
+step = 258, loss = 1.5868912935256958, lr=4.0451497937032565e-05
+[2024-07-16 07:09:02,911] [INFO] [logging.py:96:log_dist] [Rank 0] step=260, skipped=0, lr=[4.0451497937032565e-05], mom=[[0.9, 0.99]]
+steps: 260 loss: 1.6414 iter time (s): 6.606 samples/sec: 9.687
+step = 259, loss = 1.6413580179214478, lr=3.832247694609442e-05
+Step=   259, lr=3.832247694609442e-05, loss=1.5692, 6.61 it/s
+step = 260, loss = 1.5392341613769531, lr=3.624877444895269e-05
+step = 261, loss = 1.5839509963989258, lr=3.423063891795636e-05
+step = 262, loss = 1.5795841217041016, lr=3.226831216738568e-05
+step = 263, loss = 1.5186978578567505, lr=3.0362029324477015e-05
+step = 264, loss = 1.5392593145370483, lr=2.8512018801250427e-05
+step = 265, loss = 1.6516963243484497, lr=2.6718502267140843e-05
+step = 266, loss = 1.5901975631713867, lr=2.4981694622437545e-05
+step = 267, loss = 1.572393536567688, lr=2.3301803972534786e-05
+step = 268, loss = 1.5534565448760986, lr=2.167903160299617e-05
+[2024-07-16 07:10:08,999] [INFO] [logging.py:96:log_dist] [Rank 0] step=270, skipped=0, lr=[2.167903160299617e-05], mom=[[0.9, 0.99]]
+steps: 270 loss: 1.5020 iter time (s): 6.607 samples/sec: 9.687
+step = 269, loss = 1.5020314455032349, lr=2.011357195543695e-05
+Step=   269, lr=2.011357195543695e-05, loss=1.5631, 6.61 it/s
+step = 270, loss = 1.6109769344329834, lr=1.8605612604225386e-05
+step = 271, loss = 1.674336314201355, lr=1.7155334234008113e-05
+step = 272, loss = 1.6247375011444092, lr=1.576291061805979e-05
+step = 273, loss = 1.5776300430297852, lr=1.4428508597461531e-05
+step = 274, loss = 1.5183863639831543, lr=1.3152288061110518e-05
+step = 275, loss = 1.4640111923217773, lr=1.1934401926561089e-05
+step = 276, loss = 1.4492027759552002, lr=1.0774996121702907e-05
+step = 277, loss = 1.5924513339996338, lr=9.67420956727516e-06
+step = 278, loss = 1.6079293489456177, lr=8.632174160221495e-06
+[2024-07-16 07:11:15,080] [INFO] [logging.py:96:log_dist] [Rank 0] step=280, skipped=0, lr=[8.632174160221495e-06], mom=[[0.9, 0.99]]
+steps: 280 loss: 1.5684 iter time (s): 6.606 samples/sec: 9.688
+step = 279, loss = 1.568353533744812, lr=7.649014757885653e-06
+Step=   279, lr=7.649014757885653e-06, loss=1.5688, 6.61 it/s
+step = 280, loss = 1.5489051342010498, lr=6.724849163050995e-06
+step = 281, loss = 1.5188552141189575, lr=5.859788109825737e-06
+step = 282, loss = 1.6060025691986084, lr=5.053935250374176e-06
+step = 283, loss = 1.6684682369232178, lr=4.307387142497399e-06
+step = 284, loss = 1.5329641103744507, lr=3.620233238063375e-06
+step = 285, loss = 1.630096435546875, lr=2.992555872289082e-06
+step = 286, loss = 1.6201586723327637, lr=2.4244302538746767e-06
+step = 287, loss = 1.6502939462661743, lr=1.915924455992479e-06
+step = 288, loss = 1.593666434288025, lr=1.4670994081297795e-06
+[2024-07-16 07:12:21,156] [INFO] [logging.py:96:log_dist] [Rank 0] step=290, skipped=0, lr=[1.4670994081297795e-06], mom=[[0.9, 0.99]]
+steps: 290 loss: 1.6621 iter time (s): 6.606 samples/sec: 9.689
+step = 289, loss = 1.662102460861206, lr=1.078008888788673e-06
+Step=   289, lr=1.078008888788673e-06, loss=1.6032, 6.61 it/s
+step = 290, loss = 1.5944336652755737, lr=7.486995190421064e-07
+step = 291, loss = 1.5021634101867676, lr=4.792107569476789e-07
+step = 292, loss = 1.5633306503295898, lr=2.6957489281997925e-07
+step = 293, loss = 1.4924052953720093, lr=1.1981704536129235e-07
+step = 294, loss = 1.480520248413086, lr=2.995515865183984e-08
+Saving at step 294
+[2024-07-16 07:12:54,232] [INFO] [logging.py:96:log_dist] [Rank 0] [Torch] Checkpoint global_step295 is about to be saved!
+[2024-07-16 07:12:55,227] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving lavis/output/pp_7b_video/pretrain/global_step295/layer_00-model_states.pt...
+[2024-07-16 07:12:56,913] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved lavis/output/pp_7b_video/pretrain/global_step295/layer_00-model_states.pt.
+[2024-07-16 07:12:56,923] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving lavis/output/pp_7b_video/pretrain/global_step295/layer_01-model_states.pt...
+[2024-07-16 07:12:56,924] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved lavis/output/pp_7b_video/pretrain/global_step295/layer_01-model_states.pt.
+[2024-07-16 07:12:56,924] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving lavis/output/pp_7b_video/pretrain/global_step295/layer_02-model_states.pt...
+[2024-07-16 07:12:56,924] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved lavis/output/pp_7b_video/pretrain/global_step295/layer_02-model_states.pt.
+[2024-07-16 07:12:56,924] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving lavis/output/pp_7b_video/pretrain/global_step295/layer_03-model_states.pt...
+[2024-07-16 07:12:56,925] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved lavis/output/pp_7b_video/pretrain/global_step295/layer_03-model_states.pt.
+[2024-07-16 07:12:56,925] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving lavis/output/pp_7b_video/pretrain/global_step295/layer_04-model_states.pt...
+[2024-07-16 07:12:56,925] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved lavis/output/pp_7b_video/pretrain/global_step295/layer_04-model_states.pt.
+[2024-07-16 07:12:56,999] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving lavis/output/pp_7b_video/pretrain/global_step295/layer_05-model_states.pt...
+[2024-07-16 07:12:57,199] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved lavis/output/pp_7b_video/pretrain/global_step295/layer_05-model_states.pt.
+[2024-07-16 07:12:57,275] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving lavis/output/pp_7b_video/pretrain/global_step295/layer_06-model_states.pt...
+[2024-07-16 07:12:57,475] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved lavis/output/pp_7b_video/pretrain/global_step295/layer_06-model_states.pt.
+[2024-07-16 07:12:57,551] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving lavis/output/pp_7b_video/pretrain/global_step295/layer_07-model_states.pt...
+[2024-07-16 07:12:57,750] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved lavis/output/pp_7b_video/pretrain/global_step295/layer_07-model_states.pt.
+[2024-07-16 07:12:57,827] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving lavis/output/pp_7b_video/pretrain/global_step295/layer_08-model_states.pt...
+[2024-07-16 07:12:58,027] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved lavis/output/pp_7b_video/pretrain/global_step295/layer_08-model_states.pt.
+[2024-07-16 07:12:58,101] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving lavis/output/pp_7b_video/pretrain/global_step295/layer_09-model_states.pt...
+[2024-07-16 07:12:58,301] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved lavis/output/pp_7b_video/pretrain/global_step295/layer_09-model_states.pt.
+[2024-07-16 07:12:58,377] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving lavis/output/pp_7b_video/pretrain/global_step295/layer_10-model_states.pt...
+[2024-07-16 07:12:58,577] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved lavis/output/pp_7b_video/pretrain/global_step295/layer_10-model_states.pt.
+[2024-07-16 07:12:58,653] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving lavis/output/pp_7b_video/pretrain/global_step295/layer_11-model_states.pt...
+[2024-07-16 07:12:58,853] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved lavis/output/pp_7b_video/pretrain/global_step295/layer_11-model_states.pt.
+[2024-07-16 07:12:58,931] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving lavis/output/pp_7b_video/pretrain/global_step295/layer_12-model_states.pt...
+[2024-07-16 07:12:59,130] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved lavis/output/pp_7b_video/pretrain/global_step295/layer_12-model_states.pt.
+[2024-07-16 07:12:59,205] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving lavis/output/pp_7b_video/pretrain/global_step295/layer_13-model_states.pt...
+[2024-07-16 07:12:59,404] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved lavis/output/pp_7b_video/pretrain/global_step295/layer_13-model_states.pt.
+[2024-07-16 07:12:59,481] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving lavis/output/pp_7b_video/pretrain/global_step295/layer_14-model_states.pt...
+[2024-07-16 07:12:59,680] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved lavis/output/pp_7b_video/pretrain/global_step295/layer_14-model_states.pt.
+[2024-07-16 07:12:59,755] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving lavis/output/pp_7b_video/pretrain/global_step295/layer_15-model_states.pt...
+[2024-07-16 07:12:59,954] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved lavis/output/pp_7b_video/pretrain/global_step295/layer_15-model_states.pt.
+[2024-07-16 07:13:00,032] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving lavis/output/pp_7b_video/pretrain/global_step295/layer_16-model_states.pt...
+[2024-07-16 07:13:00,232] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved lavis/output/pp_7b_video/pretrain/global_step295/layer_16-model_states.pt.
+[2024-07-16 07:13:00,309] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving lavis/output/pp_7b_video/pretrain/global_step295/layer_17-model_states.pt...
+[2024-07-16 07:13:00,507] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved lavis/output/pp_7b_video/pretrain/global_step295/layer_17-model_states.pt.
+[2024-07-16 07:13:00,583] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving lavis/output/pp_7b_video/pretrain/global_step295/layer_18-model_states.pt...
+[2024-07-16 07:13:00,781] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved lavis/output/pp_7b_video/pretrain/global_step295/layer_18-model_states.pt.
+[2024-07-16 07:13:00,856] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving lavis/output/pp_7b_video/pretrain/global_step295/layer_19-model_states.pt...
+[2024-07-16 07:13:01,057] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved lavis/output/pp_7b_video/pretrain/global_step295/layer_19-model_states.pt.
+[2024-07-16 07:13:01,133] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving lavis/output/pp_7b_video/pretrain/global_step295/layer_20-model_states.pt...
+[2024-07-16 07:13:01,331] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved lavis/output/pp_7b_video/pretrain/global_step295/layer_20-model_states.pt.
+[2024-07-16 07:13:01,338] [INFO] [logging.py:96:log_dist] [Rank 0] Saving model checkpoint: lavis/output/pp_7b_video/pretrain/global_step295/mp_rank_00_model_states.pt
+[2024-07-16 07:13:01,338] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving lavis/output/pp_7b_video/pretrain/global_step295/mp_rank_00_model_states.pt...
+[2024-07-16 07:13:01,339] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved lavis/output/pp_7b_video/pretrain/global_step295/mp_rank_00_model_states.pt.
+[2024-07-16 07:13:01,339] [INFO] [torch_checkpoint_engine.py:21:save] [Torch] Saving lavis/output/pp_7b_video/pretrain/global_step295/bf16_zero_pp_rank_0_mp_rank_00_optim_states.pt...
+[2024-07-16 07:13:01,363] [INFO] [torch_checkpoint_engine.py:23:save] [Torch] Saved lavis/output/pp_7b_video/pretrain/global_step295/bf16_zero_pp_rank_0_mp_rank_00_optim_states.pt.
+[2024-07-16 07:13:01,364] [INFO] [engine.py:3488:_save_zero_checkpoint] bf16_zero checkpoint saved lavis/output/pp_7b_video/pretrain/global_step295/bf16_zero_pp_rank_0_mp_rank_00_optim_states.pt
+[2024-07-16 07:13:01,364] [INFO] [torch_checkpoint_engine.py:33:commit] [Torch] Checkpoint global_step295 is ready now!

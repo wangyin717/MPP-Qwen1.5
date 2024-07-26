@@ -1,0 +1,28 @@
+WARNING:py.warnings:/home/opc/miniconda3/envs/minigpt4qwen/lib/python3.8/site-packages/torch/utils/checkpoint.py:31: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn("None of the inputs have requires_grad=True. Gradients will be None")
+Traceback (most recent call last):
+  File "train_pipeline.py", line 262, in <module>
+    main()
+  File "train_pipeline.py", line 233, in main
+    loss = engine.train_batch(data_iter=train_iter)
+  File "/home/opc/miniconda3/envs/minigpt4qwen/lib/python3.8/site-packages/deepspeed/runtime/pipe/engine.py", line 373, in train_batch
+    self._exec_schedule(sched)
+  File "/home/opc/miniconda3/envs/minigpt4qwen/lib/python3.8/site-packages/deepspeed/runtime/pipe/engine.py", line 1373, in _exec_schedule
+    self._exec_instr(**cmd.kwargs)
+  File "/home/opc/miniconda3/envs/minigpt4qwen/lib/python3.8/site-packages/deepspeed/runtime/pipe/engine.py", line 679, in _exec_forward_pass
+    outputs = super().forward(inputs)
+  File "/home/opc/miniconda3/envs/minigpt4qwen/lib/python3.8/site-packages/deepspeed/utils/nvtx.py", line 15, in wrapped_fn
+    ret_val = func(*args, **kwargs)
+  File "/home/opc/miniconda3/envs/minigpt4qwen/lib/python3.8/site-packages/deepspeed/runtime/engine.py", line 1852, in forward
+    loss = self.module(*inputs, **kwargs)
+  File "/home/opc/miniconda3/envs/minigpt4qwen/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/opc/miniconda3/envs/minigpt4qwen/lib/python3.8/site-packages/deepspeed/runtime/pipe/module.py", line 351, in forward
+    x = func(forward_input)
+  File "/home/opc/miniconda3/envs/minigpt4qwen/lib/python3.8/site-packages/deepspeed/runtime/pipe/module.py", line 344, in exec_func
+    inputs = layer(inputs)
+  File "/home/opc/miniconda3/envs/minigpt4qwen/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data1/vllm/MPP-LLaVA-Qwen1.5/lavis/models/minigpt4qwen_models/minigpt4qwen_pipe.py", line 109, in forward
+    inputs_embeds[replace_image_idxs[0],replace_image_idxs[1]] = inputs_llm.view(-1,channels).to(inputs_embeds.dtype)
+RuntimeError: shape mismatch: value tensor of shape [256, 5120] cannot be broadcast to indexing result of shape [0, 5120]

@@ -1,0 +1,34 @@
+Traceback (most recent call last):
+  File "train_pipeline.py", line 262, in <module>
+    main()
+  File "train_pipeline.py", line 233, in main
+    loss = engine.train_batch(data_iter=train_iter)
+  File "/home/opc/miniconda3/envs/minigpt4qwen/lib/python3.8/site-packages/deepspeed/runtime/pipe/engine.py", line 373, in train_batch
+    self._exec_schedule(sched)
+  File "/home/opc/miniconda3/envs/minigpt4qwen/lib/python3.8/site-packages/deepspeed/runtime/pipe/engine.py", line 1373, in _exec_schedule
+    self._exec_instr(**cmd.kwargs)
+  File "/home/opc/miniconda3/envs/minigpt4qwen/lib/python3.8/site-packages/deepspeed/runtime/pipe/engine.py", line 814, in _exec_load_micro_batch
+    batch = self._next_batch()
+  File "/home/opc/miniconda3/envs/minigpt4qwen/lib/python3.8/site-packages/deepspeed/runtime/pipe/engine.py", line 645, in _next_batch
+    batch = next(self.data_iterator)
+  File "/home/opc/miniconda3/envs/minigpt4qwen/lib/python3.8/site-packages/deepspeed/runtime/dataloader.py", line 34, in __next__
+    batch = next(self.data_iter)
+  File "/home/opc/miniconda3/envs/minigpt4qwen/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 633, in __next__
+    data = self._next_data()
+  File "/home/opc/miniconda3/envs/minigpt4qwen/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1345, in _next_data
+    return self._process_data(data)
+  File "/home/opc/miniconda3/envs/minigpt4qwen/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1371, in _process_data
+    data.reraise()
+  File "/home/opc/miniconda3/envs/minigpt4qwen/lib/python3.8/site-packages/torch/_utils.py", line 644, in reraise
+    raise exception
+AttributeError: Caught AttributeError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/home/opc/miniconda3/envs/minigpt4qwen/lib/python3.8/site-packages/torch/utils/data/_utils/worker.py", line 308, in _worker_loop
+    data = fetcher.fetch(index)
+  File "/home/opc/miniconda3/envs/minigpt4qwen/lib/python3.8/site-packages/torch/utils/data/_utils/fetch.py", line 54, in fetch
+    return self.collate_fn(data)
+  File "train_pipeline.py", line 105, in collate_fn_minigpt4qwen
+    data_dict = preprocess_func(new_batch['conversations'])
+  File "/data1/vllm/MPP-LLaVA-Qwen1.5/lavis/models/minigpt4qwen_models/minigpt4qwen.py", line 241, in preprocess
+    im_start = tokenizer.im_start_id
+AttributeError: 'Qwen2Tokenizer' object has no attribute 'im_start_id'

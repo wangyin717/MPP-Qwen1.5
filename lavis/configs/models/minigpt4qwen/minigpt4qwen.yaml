@@ -31,7 +31,7 @@ model:
   freeze_proj: False
 
   # path to Vicuna checkpoint
-  llm_model: "ckpt/Qwen1.5-14B-Chat"
+  llm_model: "ckpt/Qwen1.5-7B-Chat"
   llm_device_map: "cpu"
 
   # lora config

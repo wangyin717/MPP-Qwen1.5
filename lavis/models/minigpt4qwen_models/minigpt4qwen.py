@@ -361,7 +361,8 @@ class Minigpt4Qwen(Blip2Base):
         generation_config = generation_config if generation_config is not None else self.llm_model.generation_config
 
         self.llm_tokenizer.padding_side = 'left'
-        self.llm_tokenizer.pad_token_id = self.llm_tokenizer.eod_id
+        self.llm_tokenizer.pad_token_id = self.llm_tokenizer.pad_token_id
+        # self.llm_tokenizer.pad_token_id = self.llm_tokenizer.eod_id
 
         image = deepcopy(samples["image"])
         text = deepcopy(samples['text'])
@@ -411,9 +412,11 @@ class Minigpt4Qwen(Blip2Base):
             stop_words_ids=stop_words_ids,
             return_dict_in_generate=False,
             generation_config=generation_config,
-            pad_token_id=self.llm_tokenizer.eod_id,
+            # pad_token_id=self.llm_tokenizer.eod_id,
+            pad_token_id=self.llm_tokenizer.pad_token_id,
             bos_token_id=self.llm_tokenizer(' ').input_ids[0], # 我发现规定inputs_embeds，指定bos_token_id好像没用？
-            eos_token_id=[self.llm_tokenizer.im_end_id,self.llm_tokenizer.im_start_id],
+            # eos_token_id=[self.llm_tokenizer.im_end_id,self.llm_tokenizer.im_start_id],
+            eos_token_id=[self.llm_tokenizer.additional_special_tokens_ids[1],self.llm_tokenizer.additional_special_tokens_ids[0]],
         )
         if not chat:
             output_text = [
@@ -477,7 +480,7 @@ class Minigpt4Qwen(Blip2Base):
         outputs = self.generate(
                     sample,
                     chat=True,
-                    stop_words_ids=stop_words_ids,
+                    # stop_words_ids=stop_words_ids,
                     return_dict_in_generate=False,
                     generation_config=generation_config,
                     **kwargs,

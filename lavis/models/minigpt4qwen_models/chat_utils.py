@@ -18,7 +18,8 @@ def get_stop_words_ids(chat_format, tokenizer):
     if chat_format == "raw":
         stop_words_ids = [tokenizer.encode("Human:"), [tokenizer.eod_id]]
     elif chat_format == "chatml":
-        stop_words_ids = [[tokenizer.im_end_id], [tokenizer.im_start_id]]
+        # stop_words_ids = [[tokenizer.im_end_id], [tokenizer.im_start_id]]
+        stop_words_ids = [[tokenizer.additional_special_tokens_ids[1]], [tokenizer.additional_special_tokens_ids[0]]]
     else:
         raise NotImplementedError(f"Unknown chat format {chat_format!r}")
     return stop_words_ids
@@ -38,7 +39,8 @@ def decode_tokens(
         return _decode_chatml(
             tokens,
             stop_words=[],
-            eod_token_ids=[tokenizer.im_start_id, tokenizer.im_end_id],
+            # eod_token_ids=[tokenizer.im_start_id, tokenizer.im_end_id],
+            eod_token_ids=[tokenizer.additional_special_tokens_ids[0], tokenizer.additional_special_tokens_ids[1]],
             tokenizer=tokenizer,
             verbose=verbose,
             return_end_reason=return_end_reason,
@@ -94,8 +96,10 @@ def make_context(
 
     if chat_format == "chatml":
         im_start, im_end = "<|im_start|>", "<|im_end|>"
-        im_start_tokens = [tokenizer.im_start_id]
-        im_end_tokens = [tokenizer.im_end_id]
+        # im_start_tokens = [tokenizer.im_start_id]
+        # im_end_tokens = [tokenizer.im_end_id]
+        im_start_tokens = [tokenizer.additional_special_tokens_ids[0]]
+        im_end_tokens = [tokenizer.additional_special_tokens_ids[1]]
         nl_tokens = tokenizer.encode("\n")
 
         def _tokenize_str(role, content):

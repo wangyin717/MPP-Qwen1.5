@@ -23,7 +23,7 @@ model:
   unfreeze_pos_embed: False
 
   # Q-Former
-  num_query_token: 32
+  num_query_token: 40
   qformer_text_input: False
   freeze_qformer: True
   freeze_queries: True
@@ -36,12 +36,15 @@ model:
 
   # lora config
   get_lora: False
-  lora_alpha: 32
+  lora_alpha: 48
   lora_r: 8
   lora_dropout: 0.05
 
   # text length when training
   max_txt_len: 256
+
+  # enable autocast of vit
+  enable_autocast: False
 
 datasets:
   llava_pretrain: # name of the dataset builder
@@ -63,6 +66,7 @@ datasets:
           name: "base_instruction"
           max_words: 200
 
+
 run:
   task: image_text_pretrain
   # optimizer
@@ -73,14 +77,14 @@ run:
   warmup_steps: 500
   weight_decay: 0.05
   grad_norm_clip: 1.
-  max_epoch: 10 #5
+  max_epoch: 1 #5
   batch_size_train: 1 #16
   batch_size_eval: 1
   num_workers: 4
   accum_grad_iters: 16 #1
 
   seed: 42
-  output_dir: "output/instruction_tuning/lr1e-4"
+  output_dir: "/data1/vllm/MPP-LLaVA-Qwen1.5/lavis/output/pretrain/"
 
   log_freq: 64
 
@@ -99,3 +103,149 @@ run:
   dist_url: "env://"
   distributed: True
   # fsdp: False
+
+# run:
+#   task: image_text_pretrain
+#   # optimizer
+#   lr_sched: "linear_warmup_cosine_lr"
+#   init_lr: 1e-3
+#   min_lr: 0
+#   warmup_lr: 0
+#   warmup_steps: 500
+#   weight_decay: 0.
+#   grad_norm_clip: 1.
+#   max_epoch: 1 #5
+#   batch_size_train: 1 #16
+#   batch_size_eval: 1
+#   num_workers: 8
+#   accum_grad_iters: 1 #1
+
+#   seed: 42
+#   output_dir: "/data1/vllm/MPP-LLaVA-Qwen1.5/lavis/output/pretrain/"
+
+#   log_freq: 64
+
+#   amp: True
+#   autocast_dtype: "fp16" # ['bf16','fp16']
+#   loss_scale: True # 默认为True，如果autocast_dtype为float16，请设置为True，为bfloat16，建议设置为False
+#   resume_ckpt_path: null
+
+#   evaluate: False
+#   train_splits: ["train"]
+#   # valid_splits: ["val"]
+#   # test_splits: ["test"]
+
+#   device: "cuda"
+#   world_size: 1
+#   dist_url: "env://"
+#   distributed: True
+#   # fsdp: False
+#   deepspeed_config:
+#     # global batch = 256 = n_ranks * grad_acc_steps * micro_batch_size = (2//2) * 256 * 1
+#     gradient_accumulation_steps: 8
+#     train_micro_batch_size_per_gpu: 8
+
+#     gradient_clipping: 1.
+#     steps_per_print: 10
+#     wall_clock_breakdown: false
+#     dump_state: False
+
+#     fp16:
+#         enabled: false
+#         loss_scale: 0
+#         loss_scale_window: 1000
+#         initial_scale_power: 16
+#         hysteresis: 2
+#         min_loss_scale: 1
+
+#     bf16:
+#         enabled: true
+
+#     optimizer:
+#         type: "AdamW"
+#         params:
+#             lr: 1e-3
+#             betas: [0.9,0.99]
+#             eps: 1e-7
+#             weight_decay: 0.
+
+#     zero_optimization:
+#         stage: 0
+#         allgather_partitions: true
+#         allgather_bucket_size: 2e8
+#         overlap_comm: true
+#         reduce_scatter: true
+#         reduce_bucket_size: 2e8
+#         contiguous_gradients: true  
+
+
+
+# run:
+#   output_dir: "/data1/vllm/MPP-LLaVA-Qwen1.5/lavis/output/pretain/"
+
+#   task: deepspeed_image_text_pretrain
+
+#   num_workers: 4
+
+#   seed: 42
+
+#   world_size: 1
+#   dist_url: "env://"
+#   distributed: True
+
+#   max_epoch: 1
+#   log_freq: 10
+
+#   lr_sched: "linear_warmup_cosine_lr_step-wise"
+#   warmup_lr: 0
+#   init_lr: 1e-3
+#   min_lr: 0
+#   warmup_ratio: 0.03
+  
+#   evaluate: False
+#   device: "cuda"
+#   batch_size_train: 1
+
+#   deepspeed_config:
+#     # global batch = 256 = n_ranks * grad_acc_steps * micro_batch_size = (2//2) * 256 * 1
+#     gradient_accumulation_steps: 8
+#     train_micro_batch_size_per_gpu: 8
+
+#     gradient_clipping: 1.
+#     steps_per_print: 10
+#     wall_clock_breakdown: false
+#     dump_state: False
+
+#     fp16:
+#         enabled: false
+#         loss_scale: 0
+#         loss_scale_window: 1000
+#         initial_scale_power: 16
+#         hysteresis: 2
+#         min_loss_scale: 1
+
+#     bf16:
+#         enabled: true
+
+#     optimizer:
+#         type: "AdamW"
+#         params:
+#             lr: 1e-3
+#             betas: [0.9,0.99]
+#             eps: 1e-7
+#             weight_decay: 0.
+
+#     zero_optimization:
+#         stage: 0
+#         allgather_partitions: true
+#         allgather_bucket_size: 2e8
+#         overlap_comm: true
+#         reduce_scatter: true
+#         reduce_bucket_size: 2e8
+#         contiguous_gradients: true
+
+ # Copyright (c) 2022, salesforce.com, inc.
+ # All rights reserved.
+ # SPDX-License-Identifier: BSD-3-Clause
+ # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+

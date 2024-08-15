@@ -63,7 +63,7 @@ datasets:
           max_words: 200
 
 run:
-  output_dir: "lavis/output/pp_7b_video/pretrain/"
+  output_dir: "/data1/vllm/MPP-LLaVA-Qwen1.5/lavis/output/pretain/"
 
   task: deepspeed_image_text_pretrain
 

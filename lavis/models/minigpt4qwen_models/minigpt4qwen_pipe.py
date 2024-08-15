@@ -6,12 +6,130 @@ import contextlib
 import torch
 import torch.nn as nn
 from torch.utils.checkpoint import checkpoint
-
 import transformers
-
 from deepspeed.pipe import PipelineModule, TiedLayerSpec, LayerSpec
-
 from .minigpt4qwen import Minigpt4Qwen
+import importlib
+
+
+class Qwen2RotaryEmbedding(nn.Module):
+    def __init__(self, dim, max_position_embeddings=2048, base=10000, device=None):
+        super().__init__()
+
+        self.dim = dim
+        self.max_position_embeddings = max_position_embeddings
+        self.base = base
+        inv_freq = 1.0 / (self.base ** (torch.arange(0, self.dim, 2, dtype=torch.int64).float().to(device) / self.dim))
+        self.register_buffer("inv_freq", inv_freq, persistent=False)
+
+        # Build here to make `torch.jit.trace` work.
+        self._set_cos_sin_cache(
+            seq_len=max_position_embeddings, device=self.inv_freq.device, dtype=torch.get_default_dtype()
+        )
+
+    def _set_cos_sin_cache(self, seq_len, device, dtype):
+        self.max_seq_len_cached = seq_len
+        t = torch.arange(self.max_seq_len_cached, device=device, dtype=torch.int64).type_as(self.inv_freq)
+
+        freqs = torch.outer(t, self.inv_freq)
+        # Different from paper, but it uses a different permutation in order to obtain the same calculation
+        emb = torch.cat((freqs, freqs), dim=-1)
+        self.register_buffer("cos_cached", emb.cos().to(dtype), persistent=False)
+        self.register_buffer("sin_cached", emb.sin().to(dtype), persistent=False)
+
+    def forward(self, x, seq_len=None):
+        # x: [bs, num_attention_heads, seq_len, head_size]
+        if seq_len > self.max_seq_len_cached:
+            self._set_cos_sin_cache(seq_len=seq_len, device=x.device, dtype=x.dtype)
+
+        return (
+            self.cos_cached[:seq_len].to(dtype=x.dtype),
+            self.sin_cached[:seq_len].to(dtype=x.dtype),
+        )
+
+
+class RotaryEmbedding(torch.nn.Module):
+    def __init__(self, dim, base=10000):
+        super().__init__()
+        self.dim = dim
+        self.base = base
+        self.inv_freq = 1.0 / (base ** (torch.arange(0, dim, 2).float() / dim)) 
+        if importlib.util.find_spec("einops") is None:
+            raise RuntimeError("einops is required for Rotary Embedding")
+
+        self._rotary_pos_emb_cache = None
+        self._seq_len_cached = 0
+        self._ntk_alpha_cached = 1.0
+
+    def update_rotary_pos_emb_cache(self, max_seq_len, offset=0, ntk_alpha=1.0):
+        seqlen = max_seq_len + offset
+        if seqlen > self._seq_len_cached or ntk_alpha != self._ntk_alpha_cached:
+            # 动态的调整base值，需要后续理解三角函数内插和外插很数学的东西。
+            base = self.base * ntk_alpha ** (self.dim / (self.dim - 2))
+            self.inv_freq = 1.0 / (
+                base
+                ** (
+                    torch.arange(0, self.dim, 2, device=self.inv_freq.device).float()
+                    / self.dim
+                )
+            )    
+            # inv_freq 就是那个旋转的角度 theta, 
+            # 采用原始transformer论文里的 base 值，原论文是加性运算。而 RoPE 是乘性运算。
+            # 两者都能实现相对位置编码的功能。
+            self._seq_len_cached = seqlen
+            self._ntk_alpha_cached = ntk_alpha
+            seq = torch.arange(seqlen, device=self.inv_freq.device)
+            freqs = torch.outer(seq.type_as(self.inv_freq), self.inv_freq)   # 计算 m * theta 
+            # Different from paper, but it uses a different permutation in order to obtain the same calculation  
+            # 理解半天：原来是 dim 向量分量 中的 element 发生交换 
+            emb = torch.cat((freqs, freqs), dim=-1) 
+            from einops import rearrange
+            self._rotary_pos_emb_cache = rearrange(emb, "n d -> 1 n 1 d")
+
+    def forward(self, max_seq_len, offset=0, ntk_alpha=1.0):
+        self.update_rotary_pos_emb_cache(max_seq_len, offset, ntk_alpha)
+        return self._rotary_pos_emb_cache[:, offset : offset + max_seq_len] 
+
+
+class RotaryEmbedding2(nn.Module):
+    def __init__(self, dim, base=10000):
+        super().__init__()
+        self.dim = dim
+        self.base = base
+        self.inv_freq = 1.0 / (base ** (torch.arange(0, dim, 2).float() / dim))
+        
+        self._cos_cached = None
+        self._sin_cached = None
+        self._seq_len_cached = 0
+        self._ntk_alpha_cached = 1.0
+
+    def update_rotary_pos_emb_cache(self, max_seq_len, offset=0, ntk_alpha=1.0):
+        seqlen = max_seq_len + offset
+        if seqlen > self._seq_len_cached or ntk_alpha != self._ntk_alpha_cached:
+            base = self.base * ntk_alpha ** (self.dim / (self.dim - 2))
+            self.inv_freq = 1.0 / (
+                base ** (torch.arange(0, self.dim, 2, device=self.inv_freq.device).float() / self.dim)
+            )
+            self._seq_len_cached = seqlen
+            self._ntk_alpha_cached = ntk_alpha
+            
+            seq = torch.arange(seqlen, device=self.inv_freq.device)
+            freqs = torch.outer(seq.type_as(self.inv_freq), self.inv_freq)
+            
+            # 计算余弦和正弦值并缓存
+            emb = torch.cat((freqs, freqs), dim=-1)
+            from einops import rearrange
+            emb = rearrange(emb, "n d -> 1 n 1 d")
+            self._cos_cached = emb.cos()
+            self._sin_cached = emb.sin()
+
+    def forward(self, max_seq_len, offset=0, ntk_alpha=1.0):
+        self.update_rotary_pos_emb_cache(max_seq_len, offset, ntk_alpha)
+        return (
+            self._cos_cached[:, offset : offset + max_seq_len],
+            self._sin_cached[:, offset : offset + max_seq_len],
+        )
+
 
 def enable_input_require_grads(module):
     def make_inputs_require_grads(module,input,output):
@@ -84,6 +202,10 @@ class TokenizerPipeLayer(nn.Module):
 
         # rope + ntk
         # self.rotary_emb = model.llm_model.base_model.rotary_emb
+        self.rotary_emb = RotaryEmbedding2(
+            dim=128
+        )
+
         # rotary_emb 对应到Qwen2是 model.llm_model.base_model.layers[0].self_attn.rotary_emb
         # a = model.llm_model.base_model.layers[0].self_attn
         # all_layers = model.llm_model.base_model.layers
@@ -105,6 +227,7 @@ class TokenizerPipeLayer(nn.Module):
         inputs_llm = self.visionpipe(image)
 
         device = inputs_llm.device
+
         # llm_tokens = torch.where(llm_tokens==151646, 27, llm_tokens)
         replace_image_idxs = torch.where(llm_tokens == self.replace_image_token_id)
         inputs_embeds = self.wtepipe(llm_tokens) # B, L, C
@@ -112,7 +235,7 @@ class TokenizerPipeLayer(nn.Module):
 
         inputs_embeds = inputs_embeds.clone()
         # 不加这个
-        # inputs_embeds[replace_image_idxs[0],replace_image_idxs[1]] = inputs_llm.view(-1,channels).to(inputs_embeds.dtype)
+        inputs_embeds[replace_image_idxs[0],replace_image_idxs[1]] = inputs_llm.view(-1,channels).to(inputs_embeds.dtype)
 
         # rope + ntk
         # get rotary_pos_emb_list
@@ -128,17 +251,18 @@ class TokenizerPipeLayer(nn.Module):
         kv_seq_len = inputs_embeds.size()[1]
         if self.llm_training or not self.use_dynamic_ntk:
             ntk_alpha_list = [1.0]
-        else:
-            ntk_alpha_list = []
-            ntk_alpha = self.get_ntk_alpha(kv_seq_len)
-            ntk_alpha_list.append(ntk_alpha)
+        # else:
+        #     ntk_alpha_list = []
+        #     ntk_alpha = self.get_ntk_alpha(kv_seq_len)
+        #     ntk_alpha_list.append(ntk_alpha)
         # 注释掉了
         # self.rotary_emb._ntk_alpha_cached_list = ntk_alpha_list
-        ntk_alpha = ntk_alpha_list[0]
+        # ntk_alpha = ntk_alpha_list[0]
         # 这里去掉了一个参数
-        # rotary_pos_emb_list = self.rotary_emb(kv_seq_len)
+        rotary_pos_emb_list = self.rotary_emb(kv_seq_len)
         # rotary_pos_emb_list = self.rotary_emb(kv_seq_len, ntk_alpha=ntk_alpha)
-        # rotary_pos_emb_list = torch.stack(rotary_pos_emb_list,dim=0)
+        rotary_pos_emb_list = torch.stack(rotary_pos_emb_list,dim=0)
+        rotary_pos_emb_list = rotary_pos_emb_list.to("cuda")
         # print(rotary_pos_emb_list);exit(0)
 
         # 在Qwen2中应该没有使用 Dropout
@@ -156,10 +280,10 @@ class TokenizerPipeLayer(nn.Module):
             attention_mask = attention_mask.to(dtype=self.wtepipe.word_embeddings.weight.dtype)
             attention_mask = (1.0 - attention_mask) * torch.finfo(self.wtepipe.word_embeddings.weight.dtype).min
 
-        # rotary_pos_emb_list.requires_grad_(True)
+        rotary_pos_emb_list.requires_grad_(True)
         attention_mask.requires_grad_(True)
 
-        return inputs_embeds, attention_mask, targets, position_ids, output_shape
+        return inputs_embeds, attention_mask, targets, rotary_pos_emb_list, position_ids, output_shape
 
 class QwenBlockPipeLayer(torch.nn.Module):
     def __init__(self, model: Minigpt4Qwen, layer_idx, llm_grad_ckpt):
@@ -169,7 +293,8 @@ class QwenBlockPipeLayer(torch.nn.Module):
         self.layer = model.llm_model.base_model.layers[layer_idx]
         
         self.layer_idx = layer_idx
-        self.llm_grad_ckpt = llm_grad_ckpt
+        # self.llm_grad_ckpt = llm_grad_ckpt
+        self.llm_grad_ckpt = False
 
     def forward(self, ipt):
         inputs_embeds, attention_mask, targets, rotary_pos_emb_list, position_ids, output_shape = ipt
@@ -177,19 +302,25 @@ class QwenBlockPipeLayer(torch.nn.Module):
 
         # support grad-ckpt
         if self.llm_grad_ckpt:
+            expanded_attention_mask = attention_mask.expand(-1, -1, 1536, -1)
+            expanded_attention_mask = expanded_attention_mask.to("cuda")
             inputs_embeds = checkpoint(
                 self.layer,
                 inputs_embeds,
                 [[rotary_pos_emb_list[0],rotary_pos_emb_list[1]]],
                 None,
-                attention_mask,
+                expanded_attention_mask,
                 None,
             )[0]
         else:
+            # 扩展维度：如果 seq_len 为 1536，你可能需要将这个掩码扩展到 [1, 1, 1536, 1536]，表示对所有的序列元素进行掩码。Qwen2要求的attention_mask是[1, 1, 1536, 1536]
+            expanded_attention_mask = attention_mask.expand(-1, -1, 1536, -1)
+            expanded_attention_mask = expanded_attention_mask.to("cuda")
+            expanded_attention_mask.requires_grad_(True)
             inputs_embeds = self.layer(
                 inputs_embeds,
                 rotary_pos_emb_list=[[rotary_pos_emb_list[0],rotary_pos_emb_list[1]]],
-                attention_mask=attention_mask,
+                attention_mask=expanded_attention_mask,
                 head_mask=None,
             )[0]
         return inputs_embeds, attention_mask, targets, rotary_pos_emb_list, position_ids, output_shape

@@ -6,5 +6,5 @@ api = HubApi()
 api.login(YOUR_ACCESS_TOKEN)
 api.push_model(
     model_id="wangyin717/MPP-Qwen1.5", 
-    model_dir="/data1/vllm/MPP-LLaVA-Qwen1.5/lavis/output/instruction_tuning/lr1e-4/20240725091" # 本地模型目录，要求目录中必须包含configuration.json
+    model_dir="/data1/vllm/MPP-LLaVA-Qwen1.5-github/MPP-Qwen1.5/lavis/output/weight" # 本地模型目录，要求目录中必须包含configuration.json
 )

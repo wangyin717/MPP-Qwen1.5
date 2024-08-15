@@ -11,4 +11,4 @@ datasets:
           storage: /data1/vllm/MPP-LLaVA/cache/dataset/videochatgpt/videochatgpt_instruction_100k_zh.json
       images:
           storage: /data1/vllm/MPP-LLaVA/cache/dataset/videochatgpt/videochatgpt_tune
-      max_frames: 32
+      max_frames: 48

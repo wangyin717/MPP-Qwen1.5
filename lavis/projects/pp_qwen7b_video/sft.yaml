@@ -5,8 +5,12 @@ model:
   load_pretrained: True
 
   # pretrained: "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/InstructBLIP/blip2_pretrained_flant5xxl.pth"
-  pretrained: "ckpt/blip2/blip2_pretrained_flant5xxl.pth"
-  finetuned: "/root/autodl-tmp/MiniGPT4Qwen/lavis/output/pp_7b_video/pretrain/global_step2181/model.pth"
+  pretrained: "/data1/vllm/MPP-LLaVA-Qwen1.5/cache/ckpt/blip2/blip2_pretrained_flant5xxl.pth"
+  # finetuned: "/root/autodl-tmp/MiniGPT4Qwen/lavis/output/pp_7b_video/pretrain/global_step2181/model.pth"
+  # finetuned: "/data1/vllm/MPP-LLaVA-Qwen1.5/lavis/output/instruction_tuning/lr1e-4/20240725091/checkpoint_9.pth"
+  finetuned: "/data1/vllm/MPP-LLaVA-Qwen1.5/lavis/output/pretrain/20240814064/checkpoint_0.pth"
+  
+
 
   # vit encoder
   vit_model: "eva_clip_g"
@@ -27,19 +31,19 @@ model:
   freeze_proj: False
 
   # path to Vicuna checkpoint
-  llm_model: "ckpt/Qwen7B-chat"
+  llm_model: "/data1/vllm/MPP-LLaVA-Qwen1.5/cache/ckpt/Qwen2-7B"
 
   # unfreeze LLM for better chat
   freeze_llm: False
 
   # lora config
-  get_lora: False
+  get_lora: True
   lora_alpha: 32
   lora_r: 8
   lora_dropout: 0.05
 
   # text length when training
-  max_txt_len: 1536 # 512
+  max_txt_len: 512 # 512
 
   # enable autocast of vit
   enable_autocast: False
@@ -66,7 +70,7 @@ datasets:
           max_words: 200
 
 run:
-  output_dir: "lavis/output/pp_7b_video/sft_video/"
+  output_dir: "/data1/vllm/MPP-LLaVA-Qwen1.5/lavis/output/pp_7b_video/sft_video/"
 
   task: deepspeed_image_text_pretrain
 
